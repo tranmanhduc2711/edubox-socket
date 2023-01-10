@@ -29,6 +29,9 @@ io.on("connection", (socket) => {
   socket.on("JOIN_GAME", (data) => {
     socket.join(data.presentCode);
   });
+  socket.on("JOIN_GROUPS", (data) => {
+    socket.join(data.groupCodes);
+  });
   socket.on("START_GAME", (data) => {
     io.to(data.presentCode).emit("START_GAME", data);
   });
@@ -41,9 +44,12 @@ io.on("connection", (socket) => {
   socket.on("NEXT_SLIDE", (data) => {
     io.to(data.presentCode).emit("NEXT_SLIDE", data);
   });
-  socket.on("SEND_MESSAGE", data => {
-    io.to(data.presentCode).emit("RECEIVE_MESSAGE", data);  
-  })
+  socket.on("SEND_MESSAGE", (data) => {
+    io.to(data.presentCode).emit("RECEIVE_MESSAGE", data);
+  });
+  socket.on("NOTIFY_GROUP_GAME_START", (data) => {
+    io.to(data.groupCode).emit("NOTIFY_GROUP_GAME_START", data);
+  });
 });
 
 server.listen(5000, () => {
