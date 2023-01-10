@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'edubox-socket'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_220853F38A0440FAA965DBFBED63B1DB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_39249A4124E6480CB10CEBE993A85772 }}
           package: .
